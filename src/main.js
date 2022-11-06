@@ -5,4 +5,4 @@ import MyReact from './core/MyReact.js';
 MyReact.render(
   App,
   document.getElementById('app'),
-)
+);
