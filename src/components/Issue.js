@@ -13,6 +13,10 @@ const Issue = () => {
   const [issueList, setIssueList] = MyReact.useState([]);
   const [issueStatus, setIssueStatus] = MyReact.useState(ISSUE_STATUS.open);
 
+  const issueItemComponents = issueList
+    .filter(issue => issue.status === issueStatus)
+    .map(issueItem => IssueItem({issueItem}));
+
   const fetchIssueList = async () => {
     const data = await getIssueItemList();
     setIssueList(data);
@@ -85,12 +89,9 @@ const Issue = () => {
   };
 
   const renderIssueItems = () => {
-    issueList
-      .filter(issue => issue.status === issueStatus)
-      .map(issueItem => IssueItem({issueItem}))
-      .map(issueItemComponent => {
-        document.querySelector('.issue-list > ul').innerHTML += issueItemComponent.template();
-      });
+    issueItemComponents.map(issueItemComponent => {
+      document.querySelector('.issue-list > ul').innerHTML += issueItemComponent.template();
+    });
   };
 
   const template = () => {
