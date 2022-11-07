@@ -1,13 +1,14 @@
 import Component from './Component.js';
 
 
-const MyReact = (() => {
+const MyReact = (component => {
   const options = {
     hooks: [],
     hookIdx: 0,
     renderCount: 0,
     container: null,
     root: null,
+    component: null,
   }
 
   const useEffect = (callback, depArr) => {
@@ -67,17 +68,20 @@ const MyReact = (() => {
     console.log('==============================');
   };
 
+  const initDefaultOptions = initialOptions => {
+    Object.assign(options, initialOptions);
+  }
+
   const render = (root, container) => {
-    options.container = container;
-    options.root = root;
+    initDefaultOptions({root, container, component});
     _render();
   }
 
   const createComponent = ({template, templateDidMount, setEvent}) => (
-    Component({template, templateDidMount, setEvent})
+    options.component({template, templateDidMount, setEvent})
   );
 
   return {useEffect, useState, render, createComponent};
-})();
+})(Component);
 
 export default MyReact;
