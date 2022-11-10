@@ -34,14 +34,7 @@ const Issue = () => {
     setIssueStatus(ISSUE_STATUS.close);
   };
 
-  const getIssueStateElem = status => {
-    switch (status) {
-      case ISSUE_STATUS.open:
-        return document.querySelector(`.${status}-count`);
-      case ISSUE_STATUS.close:
-        return document.querySelector(`.${status}-count`);
-    }
-  };
+  const getIssueStateElem = status => document.querySelector(`.${status}-count`);
 
   const getIssueStatusCount = status => (
     issueList.filter(issue => issue.status === status).length
