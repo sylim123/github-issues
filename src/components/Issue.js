@@ -95,18 +95,15 @@ const Issue = () => {
   };
 
   const template = () => {
-    console.log('Issue template');
     return getIssueTpl();
   };
 
   const templateDidMount = () => {
-    console.log('Issue templateDidMount');
     renderIssueStatusTab();
     renderIssueItems();
   };
 
   const setEvent = () => {
-    console.log('Issue setEvent');
     getIssueStateElem(ISSUE_STATUS.open)
       .addEventListener('click', handleClickIssueOpens);
 

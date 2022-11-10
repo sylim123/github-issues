@@ -5,7 +5,6 @@ const errorHandler = error => {
 const successHandler = response => response;
 
 const requestInterceptor = config => {
-  console.log('intercepted config', config);
   return config;
 }
 

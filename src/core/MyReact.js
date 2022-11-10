@@ -64,8 +64,6 @@ const MyReact = (component => {
 
     options.hookIdx = 0;
     options.renderCount += 1;
-    console.log('here _render()', options);
-    console.log('==============================');
   };
 
   const initDefaultOptions = initialOptions => {

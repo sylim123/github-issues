@@ -6,7 +6,6 @@ const App = () => {
   const issueComponent = Issue();
 
   const template = () => {
-    console.log('App template');
     return `
       <div>
         ${issueComponent.template()}
@@ -15,12 +14,10 @@ const App = () => {
   };
 
   const templateDidMount = () => {
-    console.log('App templateDidMount');
     issueComponent.templateDidMount();
   };
 
   const setEvent = () => {
-    console.log('App setEvent');
     issueComponent.setEvent();
   };
 
