@@ -2,6 +2,7 @@ import IssueItem from './IssueItem.js';
 import MyReact from '../core/MyReact.js';
 import {getIssueItemList} from '../api/index.js';
 import {getIssueTpl} from '../tpl.js';
+import {asyncPipe} from '../utils/pipe.js';
 
 
 const ISSUE_STATUS = {
@@ -17,10 +18,7 @@ const Issue = () => {
     .filter(issue => issue.status === issueStatus)
     .map(issueItem => IssueItem({issueItem}));
 
-  const fetchIssueList = async () => {
-    const issueItems = await getIssueItemList();
-    setIssueItemList(issueItems);
-  };
+  const fetchIssueList = asyncPipe(getIssueItemList, setIssueItemList);
 
   MyReact.useEffect(() => {
     fetchIssueList();
