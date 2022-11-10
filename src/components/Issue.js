@@ -10,16 +10,16 @@ const ISSUE_STATUS = {
 }
 
 const Issue = () => {
-  const [issueList, setIssueList] = MyReact.useState([]);
+  const [issueItemList, setIssueItemList] = MyReact.useState([]);
   const [issueStatus, setIssueStatus] = MyReact.useState(ISSUE_STATUS.open);
 
-  const issueItemComponents = issueList
+  const issueItemComponents = issueItemList
     .filter(issue => issue.status === issueStatus)
     .map(issueItem => IssueItem({issueItem}));
 
   const fetchIssueList = async () => {
-    const data = await getIssueItemList();
-    setIssueList(data);
+    const issueItems = await getIssueItemList();
+    setIssueItemList(issueItems);
   };
 
   MyReact.useEffect(() => {
@@ -37,7 +37,7 @@ const Issue = () => {
   const getIssueStateElem = status => document.querySelector(`.${status}-count`);
 
   const getIssueStatusCount = status => (
-    issueList.filter(issue => issue.status === status).length
+    issueItemList.filter(issue => issue.status === status).length
   );
 
   const getIssueStatusText = (count, status) => {
