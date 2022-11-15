@@ -3,6 +3,6 @@ import MyReact from './core/MyReact.js';
 
 
 MyReact.render(
-  App,
+  App(),
   document.getElementById('app'),
 );
