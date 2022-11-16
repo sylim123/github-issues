@@ -160,14 +160,14 @@ class Label {
       this.handleSubmitNewLabelForm(e);
     });
 
-    document.querySelector(SELECTOR.labelNameValue).addEventListener('change', e => {
-      this.handleChangeLabelInputValue('labelNameValue', e.target.value);
+    document.querySelector(SELECTOR.labelNameValue).addEventListener('change', ({target: {value}}) => {
+      this.handleChangeLabelInputValue('labelNameValue', value);
     });
-    document.querySelector(SELECTOR.labelDescriptionValue).addEventListener('change', e => {
-      this.handleChangeLabelInputValue('labelDescriptionValue', e.target.value);
+    document.querySelector(SELECTOR.labelDescriptionValue).addEventListener('change', ({target: {value}}) => {
+      this.handleChangeLabelInputValue('labelDescriptionValue', value);
     });
-    document.querySelector(SELECTOR.labelColorValue).addEventListener('change', e => {
-      this.handleChangeLabelInputValue('labelColorValue', e.target.value);
+    document.querySelector(SELECTOR.labelColorValue).addEventListener('change', ({target: {value}}) => {
+      this.handleChangeLabelInputValue('labelColorValue', value);
     });
   };
 }
