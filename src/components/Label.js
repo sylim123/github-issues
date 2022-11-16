@@ -123,19 +123,20 @@ class Label {
 
   handleSubmitNewLabelForm = event => {
     event.preventDefault();
+    const {values} = this.store.getState();
     const {
       labelItems,
-      labelNameValue,
-      labelDescriptionValue,
-      labelColorValue,
-    } = this.store.getState().values;
+      labelNameValue: name,
+      labelColorValue: color,
+      labelDescriptionValue: description,
+    } = values;
     this.store.dispatch({
       values: {
-        ...this.store.getState().values,
+        ...values,
         labelItems: [...labelItems, {
-          name: labelNameValue,
-          color: labelColorValue.replace('#', ''),
-          description: labelDescriptionValue,
+          name,
+          description,
+          color: color.replace('#', ''),
         }],
       },
     });
