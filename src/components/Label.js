@@ -23,7 +23,7 @@ const SELECTOR = {
 class Label {
   constructor() {
     this.store = labelStore();
-    asyncPipe(getLabelItemList, this.setLabelItemList)();
+    this.fetchLabelItemList();
   }
 
   template = () => getLabelTpl();
@@ -69,6 +69,8 @@ class Label {
     document.querySelector(SELECTOR.labelCreateButton).disabled = disabled;
     this.setCreateLabelOpacityClass(!disabled);
   };
+
+  fetchLabelItemList = asyncPipe(getLabelItemList, this.setLabelItemList);
 
   renderNewLabelForm = () => {
     const {
