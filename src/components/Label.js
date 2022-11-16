@@ -81,9 +81,14 @@ class Label {
     } = this.store.getState().values;
 
     this.setNewLabelHiddenClass(newLabelIsOpen);
-    this.setLabelInputValue('labelNameValue', labelNameValue);
-    this.setLabelInputValue('labelDescriptionValue', labelDescriptionValue);
-    this.setLabelInputValue('labelColorValue', labelColorValue);
+    const setLabelInputValueParams = {
+      'labelNameValue': labelNameValue,
+      'labelDescriptionValue': labelDescriptionValue,
+      'labelColorValue': labelColorValue,
+    };
+    Object.entries(setLabelInputValueParams).map(
+      ([key, value]) => this.setLabelInputValue(key, value)
+    );
     this.setLabelBackgroundColor(labelColorValue);
     this.setCreateLabelButtonDisabled();
   };
