@@ -2,6 +2,7 @@ import IssueItem from './IssueItem.js';
 import MyReact from '../core/MyReact.js';
 import {getIssueItemList} from '../api/index.js';
 import {getIssueTpl} from '../tpl.js';
+import {asyncPipe} from '../utils/pipe.js';
 
 
 const ISSUE_STATUS = {
@@ -10,17 +11,14 @@ const ISSUE_STATUS = {
 }
 
 const Issue = () => {
-  const [issueList, setIssueList] = MyReact.useState([]);
+  const [issueItemList, setIssueItemList] = MyReact.useState([]);
   const [issueStatus, setIssueStatus] = MyReact.useState(ISSUE_STATUS.open);
 
-  const issueItemComponents = issueList
+  const issueItemComponents = issueItemList
     .filter(issue => issue.status === issueStatus)
     .map(issueItem => IssueItem({issueItem}));
 
-  const fetchIssueList = async () => {
-    const data = await getIssueItemList();
-    setIssueList(data);
-  };
+  const fetchIssueList = asyncPipe(getIssueItemList, setIssueItemList);
 
   MyReact.useEffect(() => {
     fetchIssueList();
@@ -34,17 +32,10 @@ const Issue = () => {
     setIssueStatus(ISSUE_STATUS.close);
   };
 
-  const getIssueStateElem = status => {
-    switch (status) {
-      case ISSUE_STATUS.open:
-        return document.querySelector(`.${status}-count`);
-      case ISSUE_STATUS.close:
-        return document.querySelector(`.${status}-count`);
-    }
-  };
+  const getIssueStateElem = status => document.querySelector(`.${status}-count`);
 
   const getIssueStatusCount = status => (
-    issueList.filter(issue => issue.status === status).length
+    issueItemList.filter(issue => issue.status === status).length
   );
 
   const getIssueStatusText = (count, status) => {
@@ -95,18 +86,15 @@ const Issue = () => {
   };
 
   const template = () => {
-    console.log('Issue template');
     return getIssueTpl();
   };
 
   const templateDidMount = () => {
-    console.log('Issue templateDidMount');
     renderIssueStatusTab();
     renderIssueItems();
   };
 
   const setEvent = () => {
-    console.log('Issue setEvent');
     getIssueStateElem(ISSUE_STATUS.open)
       .addEventListener('click', handleClickIssueOpens);
 

@@ -6,7 +6,6 @@ const IssueItem = (props) => {
   const {issueItem} = props;
 
   const template = () => {
-    console.log('IssueItem template', issueItem);
     return getIssueItemTpl(issueItem)
   }
 

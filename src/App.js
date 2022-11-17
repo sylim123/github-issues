@@ -1,34 +1,20 @@
 import Issue from './components/Issue.js';
+import Label from './components/Label.js';
 import MyReact from './core/MyReact.js';
+import Router from './core/Router.js';
+import {getRoute} from './core/Router.js';
 
 
 const App = () => {
-  const issueComponent = Issue();
+  const router = Router([
+    getRoute({path: '/', component: null}),
+    getRoute({path: '/issues', component: Issue}),
+    getRoute({path: '/labels', component: Label}),
+  ]);
 
-  const template = () => {
-    console.log('App template');
-    return `
-      <div>
-        ${issueComponent.template()}
-      </div>
-    `
-  };
+  const render = container => router.route(container);
 
-  const templateDidMount = () => {
-    console.log('App templateDidMount');
-    issueComponent.templateDidMount();
-  };
-
-  const setEvent = () => {
-    console.log('App setEvent');
-    issueComponent.setEvent();
-  };
-
-  return MyReact.createComponent({
-    template,
-    templateDidMount,
-    setEvent,
-  });
+  return MyReact.createComponent({render});
 }
 
 export default App;
