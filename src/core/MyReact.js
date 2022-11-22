@@ -8,7 +8,7 @@ const MyReact = (component => {
     renderCount: 0,
     container: null,
     root: null,
-    component: null,
+    component,
   }
 
   const useEffect = (callback, depArr) => {
@@ -57,11 +57,7 @@ const MyReact = (component => {
       return;
     }
 
-    const {template, templateDidMount, setEvent} = root();
-    container.innerHTML = template();
-    templateDidMount();
-    setEvent();
-
+    root.render(container);
     options.hookIdx = 0;
     options.renderCount += 1;
   };
@@ -71,13 +67,11 @@ const MyReact = (component => {
   }
 
   const render = (root, container) => {
-    initDefaultOptions({root, container, component});
+    initDefaultOptions({root, container});
     _render();
   }
 
-  const createComponent = ({template, templateDidMount, setEvent}) => (
-    options.component({template, templateDidMount, setEvent})
-  );
+  const createComponent = props => options.component({...props});
 
   return {useEffect, useState, render, createComponent};
 })(Component);
