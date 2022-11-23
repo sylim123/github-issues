@@ -27,6 +27,7 @@ class NewLabel {
     this.store = newLabelStore();
     this.setLabelItemList = props.setLabelItemList;
     this.setCachedValues();
+    this.setEventFlag = false;
   }
 
   getCachedLabelInputValues = () => (
@@ -121,6 +122,7 @@ class NewLabel {
   }
 
   setEvent = () => {
+    if (this.setEventFlag) return;
     document.querySelector(SELECTOR.newLabelColor).addEventListener('click', () => {
       this.handleClickNewLabelColorButton();
     });
@@ -138,6 +140,7 @@ class NewLabel {
     document.querySelector(SELECTOR.newLabelForm).addEventListener('submit', e => {
       this.handleSubmitNewLabelForm(e);
     });
+    this.setEventFlag = true;
   };
 }
 
