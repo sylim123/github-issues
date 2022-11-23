@@ -3,12 +3,13 @@ import createStore from '../core/Store.js';
 
 const initState = {
   values: {
-    labelItems: [],
-    newLabelIsOpen: false,
+    labelNameValue: '',
+    labelDescriptionValue: '',
+    labelColorValue: '',
   },
 };
 
-export const labelStore = initialValues => {
+export const newLabelStore = initialValues => {
   if (initialValues !== undefined) {
     Object.assign(initState.values, initialValues);
   }
