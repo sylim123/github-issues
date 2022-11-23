@@ -54,7 +54,7 @@ class Label {
     document.querySelector(SELECTOR.labelCount).textContent = `${this.store.getState().values.labelItems.length} Labels`;
   };
 
-  renderLabelForm = async () => {
+  renderNewLabelForm = async () => {
     const {newLabelIsOpen} = this.store.getState().values;
     this.setNewLabelHiddenClass(newLabelIsOpen);
 
@@ -80,7 +80,7 @@ class Label {
   templateDidMount = async () => {
     this.renderLabelItems();
     this.renderLabelCounts();
-    this.renderLabelForm();
+    this.renderNewLabelForm();
   };
 
   setEvent = () => {

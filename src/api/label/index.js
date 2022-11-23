@@ -37,7 +37,7 @@ export const addLabelItemAndGetLabelItemOrNull = async item => {
       body: JSON.stringify(item),
     });
     if (resp.status === 500) {
-      alert('failed to add new label');
+      alert('failed to add the new label');
       return null;
     }
     return await resp.json();

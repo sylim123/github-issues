@@ -73,11 +73,10 @@ class NewLabel {
 
   handleChangeLabelInputValue = (selectorKey, value) => {
     this.setLabelInputValue(selectorKey, value);
-    const aa = {
-    ...this.store.getState().values,
-        [selectorKey]: value,
-    };
-    this.store.dispatch({values: aa});
+    this.store.dispatch({values: {
+      ...this.store.getState().values,
+      [selectorKey]: value,
+    }});
     localStorageHandler.setValue(selectorKey, value);
   };
 
