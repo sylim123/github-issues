@@ -79,7 +79,6 @@ class Label {
   }
 
   templateDidMount = async () => {
-    console.log('Label templateDidMount');
     this.renderLabelItems();
     this.renderLabelCounts();
     this.renderLabelForm();
