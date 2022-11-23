@@ -31,7 +31,6 @@ export const getDelayedLabelItemListOrNull = () => {
 }
 
 export const addLabelItemAndGetLabelItemOrNull = async item => {
-  console.log('called addLabelItemAndGetLabelItemOrNull');
   try {
     const resp = await fetch('http://localhost:5173/labels', {
       method: 'POST',

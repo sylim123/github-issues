@@ -20,7 +20,6 @@ const SELECTOR = {
 
 class Label {
   constructor() {
-    console.log('Label con');
     this.store = labelStore();
     this.fetchLabelItemList();
     this.getDelayedLabelItemListOrNull = getDelayedLabelItemListOrNull();
@@ -79,7 +78,6 @@ class Label {
   }
 
   templateDidMount = async () => {
-    console.log('Label templateDidMount');
     this.renderLabelItems();
     this.renderLabelCounts();
     this.renderLabelForm();

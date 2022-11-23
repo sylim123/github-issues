@@ -24,7 +24,6 @@ const LABEL_INPUT_SELECTOR_KEYS = [
 
 class NewLabel {
   constructor(props) {
-    console.log('NewLabel constructor');
     this.store = newLabelStore();
     this.setLabelItemList = props.setLabelItemList;
     this.setCachedValues();
