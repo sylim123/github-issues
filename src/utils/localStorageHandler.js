@@ -1,4 +1,4 @@
-const localStorageHandler = defaultTTL => {
+const localStorageHandler = (defaultTTL => {
   const getWrappedValue = (value, ttl) => {
     const item = {
       value: value,
@@ -34,7 +34,7 @@ const localStorageHandler = defaultTTL => {
   const removeKey = key => localStorage.removeItem(key);
 
   return {setValue, getValue, getValueOrElse, removeKey}
-};
+})(3600 * 24 * 1000);
 
-const _localStorageHandler = localStorageHandler(3600 * 24 * 1000);
-export default _localStorageHandler;
+// const _localStorageHandler = localStorageHandler();
+export default localStorageHandler;
