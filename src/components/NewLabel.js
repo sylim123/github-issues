@@ -1,7 +1,7 @@
 import MyReact from '../core/MyReact.js';
 import localStorageHandler from '../utils/localStorageHandler.js';
 import {getClassNameSetter} from '../utils/dom.js';
-import {addLabelItemAndGetLabelItemOrNull} from '../api/label/index.js';
+import {addLabelItemAndGetLabelItemListOrNull} from '../api/label/index.js';
 import {getRandomColorCode} from '../utils/color.js';
 import {newLabelStore} from '../stores/newLabelStore.js';
 
@@ -98,7 +98,7 @@ class NewLabel {
       description: labelDescriptionValue,
       color: labelColorValue.replace('#', ''),
     };
-    const newLabelItems = await addLabelItemAndGetLabelItemOrNull(newItem);
+    const newLabelItems = await addLabelItemAndGetLabelItemListOrNull(newItem);
     if (newLabelItems !== null) {
       this.setLabelItemList(newLabelItems);
       LABEL_INPUT_SELECTOR_KEYS.map(key => this.handleChangeLabelInputValue(key, ''));

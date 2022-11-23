@@ -30,7 +30,7 @@ export const getDelayedLabelItemListOrNull = () => {
   };
 }
 
-export const addLabelItemAndGetLabelItemOrNull = async item => {
+export const addLabelItemAndGetLabelItemListOrNull = async item => {
   try {
     const resp = await fetch('http://localhost:5173/labels', {
       method: 'POST',
