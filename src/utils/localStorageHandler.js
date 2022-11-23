@@ -36,5 +36,4 @@ const localStorageHandler = (defaultTTL => {
   return {setValue, getValue, getValueOrElse, removeKey}
 })(3600 * 24 * 1000);
 
-// const _localStorageHandler = localStorageHandler();
 export default localStorageHandler;
